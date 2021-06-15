@@ -1,15 +1,12 @@
 package tentenaojubilar;
 
-public class Instituto extends Celula {
+public class Instituto extends Propriedade {
     String nome = null;
     int aluguel;
     int custo;
 
-    Instituto(int custo, int aluguel, String nome) {
-        super();
-        this.aluguel = aluguel;
-        this.custo = custo;
-        this.nome = nome;
+    Instituto(String nome, int aluguel, int custo) {
+        super(nome, aluguel, custo);
     }
 
 

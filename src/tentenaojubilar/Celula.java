@@ -1,9 +1,10 @@
 package tentenaojubilar;
 
 public class Celula {
-
-    Celula() {
-
-    }
-
+	private String direcao;
+	
+	public String getDirecao() {
+		return direcao;
+	}
+	
 }

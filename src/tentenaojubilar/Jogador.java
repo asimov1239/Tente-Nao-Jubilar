@@ -1,26 +1,45 @@
 package tentenaojubilar;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Jogador {
-    String nome;
-    int credito;
-    Instituto[] institutos;
+    private String nome;
+    private int credito;
+    private Propriedade[] posses;
+    private int i, j;
 
-    Jogador(String nome) {
+    public Jogador(String nome) {
         this.nome = nome;
+        this.i = 0;
+        this.j = 0;
     }
 
-
-    void adicionarInstituto(Instituto add) {
-        int novotamanho = this.institutos.length + 1;
-        Instituto[] novo = new Instituto[novotamanho];
+    public void adicionarPropriedade(Propriedade novaPropriedade) {
+        int novoTamanho = this.posses.length + 1;
+        Propriedade[] novo = new Propriedade[novoTamanho];
         int j = 0;
-        for (int i = 0; i < this.institutos.length; i++) {
-            novo[i] = institutos[j];
+        for (int i = 0; i < this.posses.length; i++) {
+            novo[i] = posses[j];
             j++;
         }
-        this.institutos = novo;
+        novo[j] = novaPropriedade; 
+        this.posses = novo;
     }
 
+    public int getI() {
+    	return i;
+    }
+    
+    public int getJ() {
+    	return j;
+    }
+    
+    public void setI(int i) {
+    	this.i = i;
+    }
+    
+    public void setJ(int j) {
+    	this.j = j;
+    }
+    
 }
