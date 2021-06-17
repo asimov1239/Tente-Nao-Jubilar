@@ -2,7 +2,7 @@
 
 # Descrição
 
-   O Tente Não Jubilar é uma versão adaptada do Monopólio (Ou Banco Imobiliário) para o mundo universitário, em que o objetivo é acumular Créditos através de fazer aulas e provas, seus adversários deverão parar nos institutos também para fazer as aulas que você já fez, gerando mais créditos!
+   O Tente Não Jubilar é uma versão adaptada do Monopólio (Ou Banco Imobiliário) para o mundo universitário, em que o objetivo é acumular Créditos através de fazer aulas e provas, seus adversários deverão parar nos institutos também para fazer as aulas que você já fez, gerando mais créditos! Vence o indíviduo que conseguir uma certa quantidade de créditos para passar de ano sem jubilar.
 
 # Equipe
 * `<Gabriel Bonfim Silva de Moraes>` - `<216111>`
