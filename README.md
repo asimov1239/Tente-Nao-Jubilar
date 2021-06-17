@@ -22,9 +22,11 @@
 
 # Tabuleiro e Peças Utilizadas
 
-## Tabuleiro antigo:
+## Tabuleiro Antigo:
 
 ![Tabuleiro](assets/outdated_assets/tabuleiro_antigo.png)
+
+## Tabuleiro Atualizado:
 
 >Atualizamos o tabuleiro para deixa-lo mais complexo, criando atalhos e novas instituições.
 
