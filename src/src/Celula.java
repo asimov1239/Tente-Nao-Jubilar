@@ -1,4 +1,4 @@
-package tentenaojubilar;
+package src;
 
 public class Celula {
 	private String direcao;

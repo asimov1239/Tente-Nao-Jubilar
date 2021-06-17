@@ -1,4 +1,4 @@
-package tentenaojubilar;
+package src;
 
 public class Instituto extends Propriedade {
     String nome = null;
