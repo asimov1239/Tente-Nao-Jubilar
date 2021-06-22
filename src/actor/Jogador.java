@@ -1,8 +1,10 @@
-package src;
+package actor;
+
+import space.Propriedade;
 
 //import java.util.ArrayList;
 
-public class Jogador {
+public class Jogador implements IJogador {
     private String nome;
     private int credito;
     private Propriedade[] posses;

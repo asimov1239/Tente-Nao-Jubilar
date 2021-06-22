@@ -1,0 +1,36 @@
+COORD,DIR,TIPO,NOME,CUSTO,ALUG
+0:0,d,ini,,,
+0:1,d,pi,ib,200,25
+0:2,d,sr,,,
+0:3,db,pi,bccl,300,30
+0:4,d,pi,fcf,100,10
+0:5,d,pi,iq,200,25
+0:6,b,e,,,
+1:0,c,,,, ##NAOSEI
+1:3,b,,,, ##NAOSEI
+1:6,b,pi,iel,150,20
+2:0,c,pi,feec,350,50
+2:3,b,sr,,,
+2:6,b,sr,,,
+3:0,c,,,,
+3:1,e,sr,,,
+3:2,e,pi,imecc,300,40
+3:3,de,,,,
+3:4,d,pi,fef,200,35
+3:5,d,sr,,,
+3:6,b,pe,conpec,500,80
+
+4:0,c,sr,,,
+4:3,c,sr,,,
+4:6,b,,,, ##NAOSEI
+5:0,c,pi,fem,275,30
+5:3,c,pi,ifgw,300,40
+5:6,b,pi,ifch,300,30
+6:0,c,e,,,
+6:1,e,,,, ##NAOSEI
+6:2,e,pi,feagri,200,20
+6:3,ec,,,,
+6:4,e,sr,,,
+6:5,e,pi,feq,350,35
+6:6,e,b,d,d,
+

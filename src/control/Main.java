@@ -1,4 +1,4 @@
-package src;
+package control;
 
 public class Main {
 

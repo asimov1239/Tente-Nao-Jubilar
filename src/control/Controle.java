@@ -1,12 +1,26 @@
-package src;
+package control;
 
 import java.util.Scanner;
 
-public class Controle {
+import actor.Jogador;
+import builder.IMontador;
+import space.ITabuleiro;
+import space.Tabuleiro;
+
+public class Controle implements IControle {
 	private Jogador jogadores[] = new Jogador[3];
-	private Tabuleiro tabuleiro = new Tabuleiro();
 	private Scanner teclado = new Scanner(System.in);
 	private Dados dados = new Dados();
+	private IMontador montador;
+	private ITabuleiro tabuleiro;
+	
+	public void connect(ITabuleiro tabuleiro) {
+		this.tabuleiro = tabuleiro;
+	}
+	
+	public void connect(IMontador montador) {
+		this.montador = montador;
+	}
 	
 	public void iniciarJogadores(int numero) {
 		for (int i = 0; i < numero; i++) {
@@ -16,8 +30,7 @@ public class Controle {
 	}
 	
 	public void iniciarTabuleiro() {
-		Montador montador = new Montador();
-		montador.montarTabuleiro(tabuleiro);
+		tabuleiro.definirTabuleiro(montador.requisitarTabuleiro());
 	}
 	
 	public void iniciarJogo(int numero) {
