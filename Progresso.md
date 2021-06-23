@@ -33,3 +33,8 @@
 - Os métodos foram passados para as devidas interfaces. Também foram criadas as interfaces requeridas e feitas as conexões entre diferentes componentes;
 - Montador do tabuleiro implementado;
 - DataReader implementado;
+
+### Update 5
+- Determinado os valores das propriedades, das empresas e do aluguel;
+- Finalizado o tabuleiro, agora já pronto em assets;
+- Finalizado todas as tabelas com as perguntas, respostas e o sorte-ou-revés;
