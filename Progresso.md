@@ -38,3 +38,11 @@
 - Determinado os valores das propriedades, das empresas e do aluguel;
 - Finalizado o tabuleiro, agora já pronto em assets;
 - Finalizado todas as tabelas com as perguntas, respostas e o sorte-ou-revés;
+- Verde Claro: IB 200, FCF 220, IQ 200;
+- Rosa Claro: IEL 200, IA 220, IFCH 200;
+- Verde Escuro: FEA 150, FEAGRI 200, FEQ 150;
+- Azul Claro: FEM 300, FEEC 250, IC 250;
+- Azul Escuro: IFGW 150, IMECC 200;
+- Laranja: FCM 400, FEF 300;
+- As empresas são as seguintes junto com os alugueis: BCCL (40), CONPEC(50), CASA DO LAGO(40) e DAC(50);
+- O aluguel de uma empresa é calculada pegando o número dos dados e multiplicando pelo valor;
