@@ -1,2 +1,5 @@
-Quanto é 2+2?&4
-Quanto é 5! ?&120
+(2 x 3 + 11 + 3) / 2,&10
+"Se tu enfia duas bolinhas vermelhas e três bolinhas amarelas dentro de um saco, qual a chance de você puxar uma bolinha verde?",&0
+?????????? ao quadrado é igual a soma dos catetos ao quadrado.,&Hipotenusa
+Qualquer coisa dividido por 0 é 1. Verdadeiro ou falso?,&Falso
+(7 x 2 x 3 x 4 x 5 x 6 x 1 x 4 x 6 x 8 x 0 x 9 x 2 x 3) + 3,&3
