@@ -49,7 +49,8 @@
 
 ### Update 5
 - Implementados: movimentacao do jogador, execucao dos efeitos de cada tipo de células, como: perguntas e respostas, pagamento de aluguel, compra de propriedades, atraso, entre outros;
-- Classe mãe Celula agora é uma classe abstrata, pois o método `efeito` é diferente para cada herdeira;
+- Classes Celula e Propriedade agora são classes abstratas, pois o método `efeito` é diferente para cada herdeira;
+- Criada classe Atraso, herdeira de Celula;
 - Foi feito um método para exibicão do tabuleiro no console, apenas temporário (haverá interface gráfica);
 - Inicio da fase de debugging, vários pequenos erros ajustados;
 - Foi utilizada a classe dinâmica ArrayList para representar os Pagamentos e o conjunto de Propriedades de um Jogador;
