@@ -1,7 +1,12 @@
 package space;
 
-public class Celula implements ICelula {
-	private String direcao, tipo, nome;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import actor.Jogador;
+
+public abstract class Celula implements ICelula {
+	protected String direcao, tipo, nome;
 	
 	public void definirPropriedades(String[] props, String[][] questoes) {
 		this.direcao = props[1];
@@ -12,5 +17,15 @@ public class Celula implements ICelula {
 	public String getDirecao() {
 		return direcao;
 	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public abstract ArrayList<Object> efeito(Jogador jogador, int casas);
 	
 }

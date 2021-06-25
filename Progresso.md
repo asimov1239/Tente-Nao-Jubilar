@@ -46,3 +46,12 @@
 - Laranja: FCM 400, FEF 300;
 - As empresas são as seguintes junto com os alugueis: BCCL (40), CONPEC(50), CASA DO LAGO(40) e DAC(50);
 - O aluguel de uma empresa é calculada pegando o número dos dados e multiplicando pelo valor;
+
+### Update 5
+- Implementados: movimentacao do jogador, execucao dos efeitos de cada tipo de células, como: perguntas e respostas, pagamento de aluguel, compra de propriedades, atraso, entre outros;
+- Classe mãe Celula agora é uma classe abstrata, pois o método `efeito` é diferente para cada herdeira;
+- Foi feito um método para exibicão do tabuleiro no console, apenas temporário (haverá interface gráfica);
+- Inicio da fase de debugging, vários pequenos erros ajustados;
+- Foi utilizada a classe dinâmica ArrayList para representar os Pagamentos e o conjunto de Propriedades de um Jogador;
+- OBS: na linha 52 do Controle.java foi feito um Cast. Posteriormente Será estudada uma melhor alternativa;
+- Falta: implementar o efeito do Sorte ou Reves, implementar a interface gráfica, definir excecões;

@@ -48,7 +48,7 @@ public class DataReader implements IDataReader {
 	}
 	
 	public void readQuestions() {
-		questions = readData(dataSourceQuestions, 10, 2, "&");
+		questions = readData(dataSourceQuestions, 5, 2, "&");
 	}
 	
    @SuppressWarnings("finally")

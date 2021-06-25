@@ -1,13 +1,14 @@
 package space;
 
-public class Propriedade extends Celula {
-	private String[][] questoes;
-	private int aluguel, custo;
+public abstract class Propriedade extends Celula {
+	protected int aluguel, custo;
+	protected String dono;
 	
 	public void definirPropriedades(String[] props, String[][] questoes) {
 		super.definirPropriedades(props, questoes);
-		this.aluguel = Integer.parseInt(props[4]);
-		this.custo = Integer.parseInt(props[5]);
-		this.questoes = questoes;
+		this.custo = Integer.parseInt(props[4]);
+		this.aluguel = Integer.parseInt(props[5]);
+		this.dono = null;
 	}
+	
 }
