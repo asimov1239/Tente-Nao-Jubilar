@@ -1,8 +1,8 @@
 package space;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
+import GUI.GUI;
 import actor.Jogador;
 
 public abstract class Celula implements ICelula {
@@ -26,6 +26,6 @@ public abstract class Celula implements ICelula {
 		return nome;
 	}
 	
-	public abstract ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr);
+	public abstract ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr, GUI gui);
 	
 }

@@ -1,5 +1,6 @@
 package space;
 
+import GUI.GUI;
 import actor.Jogador;
 
 import java.util.ArrayList;
@@ -14,27 +15,28 @@ public class Instituto extends Propriedade {
 		this.questoes = questoes;
 	}
 	
-	public ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr) {
+	public ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr, GUI gui) {
 		Scanner teclado = new Scanner(System.in);
 		ArrayList<Object> pagamento = null;
-		if (!questionar(teclado)) {
+		if (!questionar(teclado, gui)) {
 			jogador.setCredito(-10);
 		}
 		else { 
 			if (dono == null) {
 				if (jogador.getCredito() > custo) {
-					System.out.println("Voce deseja comprar " + nome + "? Lhe custará " + custo + " e você receberá " + aluguel + " de aluguel");
-					String resposta = teclado.nextLine();
+					gui.setOutputText("Voce deseja comprar " + nome + "? Lhe custará " + custo + " e você receberá " + aluguel + " de aluguel +" +
+							"\n\nDigite sim ou nao.");
+					String resposta = gui.getInputText();
 					if (resposta.equalsIgnoreCase("sim")) {
 						jogador.setCredito(-custo);
 						jogador.adicionarPropriedade(this);
 						this.dono = jogador.getNome();
-						System.out.println("Voce comprou " + nome + "!");
+						gui.setOutputText("Voce comprou " + nome + "!");
 					}
 				}	
 			}
 			else if (!jogador.getNome().equals(dono)) {
-				System.out.println(nome + " é propriedade de " + dono + ". Lhe pague o aluguel de " + aluguel + " creditos."); 
+				gui.setOutputText(nome + " é propriedade de " + dono + ". Lhe pague o aluguel de " + aluguel + " creditos.");
 				jogador.setCredito(-aluguel);
 				pagamento = new ArrayList<Object>(2);
 				pagamento.add(dono);
@@ -44,17 +46,17 @@ public class Instituto extends Propriedade {
 		return pagamento;
 	}
 	
-	public boolean questionar(Scanner teclado) {
+	public boolean questionar(Scanner teclado, GUI gui) {
 		Random random = new Random();
 		int indice = random.nextInt(questoes.length);
-		System.out.println(questoes[indice][0]);
-		String resposta = teclado.nextLine();
+		gui.setOutputText("Responda a seguinte questão:\n" + questoes[indice][0]);
+		String resposta = gui.getInputText();
 		boolean acerto = (resposta.equalsIgnoreCase(questoes[indice][1]));
 		if (!acerto) {
-			System.out.println("Errou! A resposta certa é: " + questoes[indice][1] + ". Pague 10 créditos.");
+			gui.setOutputText("Errou! A resposta certa é: " + questoes[indice][1] + ". Pague 10 créditos.");
 		}
 		else { 
-			System.out.println("Resposta Certa!");
+			gui.setOutputText("Resposta Certa!");
 		}
 		return acerto;
 	}

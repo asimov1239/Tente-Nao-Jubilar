@@ -10,16 +10,29 @@ public class Jogador implements IJogador {
     private ArrayList<Propriedade> posses;
     private int i, j;
     private boolean jubilado;
+    private int id;
 
     public Jogador(String nome) {
         this.nome = nome;
         this.i = 0;
         this.j = 0;
         this.atraso = 0;
-        this.credito = 250;
+        this.credito = 2500;
         this.ultimaBifurcacao = null;
         this.jubilado = false;
         this.posses = new ArrayList<Propriedade>();
+    }
+
+    public ArrayList<Propriedade> getPosses() {
+        return posses;
+    }
+
+    public int getID () {
+        return id;
+    }
+
+    public void setID (int id) {
+        this.id = id;
     }
 
     public void adicionarPropriedade(Propriedade nova) {
@@ -77,5 +90,5 @@ public class Jogador implements IJogador {
     public void setUltimaBifurcacao(String bifurcacao) {
     	this.ultimaBifurcacao = bifurcacao;
     }
-    
+
 }
