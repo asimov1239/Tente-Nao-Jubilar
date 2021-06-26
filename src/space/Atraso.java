@@ -12,7 +12,7 @@ public class Atraso extends Celula {
 		this.rodadas = rodadas;
 	}
 	
-	public ArrayList<Object> efeito(Jogador jogador, int casas) {
+	public ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr) {
 		jogador.setAtraso(rodadas);
 		return null;
 	}

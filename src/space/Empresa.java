@@ -7,13 +7,13 @@ import actor.Jogador;
 
 public class Empresa extends Propriedade {
 	
-	public ArrayList<Object> efeito(Jogador jogador, int casas) {
+	public ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr) {
 		Scanner teclado = new Scanner(System.in);
 		ArrayList<Object> pagamento = null;
 		if (dono == null) {
 			if (jogador.getCredito() > custo) {
 				System.out.println("Voce deseja comprar " + nome + "? Lhe custará " + custo + " e você receberá " + aluguel + " de aluguel");
-				String resposta = teclado.nextLine();
+				String resposta  = teclado.nextLine();
 				if (resposta.equalsIgnoreCase("sim")) {
 					jogador.setCredito(-custo);
 					jogador.adicionarPropriedade(this);

@@ -33,7 +33,7 @@ public class Controle implements IControle {
 	}
 	
 	public void iniciarTabuleiro() {
-		tabuleiro.definirTabuleiro(montador.requisitarTabuleiro());
+		tabuleiro.definirTabuleiro(montador.requisitarTabuleiro(), montador.requisitarSR());
 	}
 	
 	public void iniciarJogo(int numero) {
@@ -72,7 +72,7 @@ public class Controle implements IControle {
 		int numeroJogadores = Integer.parseInt(teclado.nextLine());
 		iniciarJogo(numeroJogadores);
 		boolean fim = false;
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 100; i++) {
 			System.out.println("-------RODADA " + (i+1) + " -------\n");
 			executarRodada();
 		}

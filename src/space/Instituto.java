@@ -14,7 +14,7 @@ public class Instituto extends Propriedade {
 		this.questoes = questoes;
 	}
 	
-	public ArrayList<Object> efeito(Jogador jogador, int casas) {
+	public ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr) {
 		Scanner teclado = new Scanner(System.in);
 		ArrayList<Object> pagamento = null;
 		if (!questionar(teclado)) {

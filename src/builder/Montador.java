@@ -10,21 +10,29 @@ import space.Inicio;
 
 public class Montador implements IMontador {
 	private IDataReader dataReader;
-	private String[][] tabuleiro = null, questoes = null;
+	private String[][] tabuleiro = null, questoes = null, sr = null;
 	private Celula[][] tab = new Celula[7][7];
 	
 	public void connect(IDataReader dataReader) {
 		this.dataReader = dataReader;
 	}
 	
-	public void guardarTabuleiro() {
-		dataReader.setDataSourceBoard("data/tabuleiro.csv");
-		tabuleiro = dataReader.requestBoard();
+	public String[][] guardarInformacoes(String dataSource, int linhas, int colunas, String sep) {
+		dataReader.setDataSource(dataSource);
+		dataReader.readData(linhas, colunas, sep);
+		return dataReader.requestData();
 	}
 	
 	public void guardarQuestoes(String arquivo) {
-		dataReader.setDataSourceQuestions(arquivo);
-		questoes = dataReader.requestQuestions();
+		questoes = guardarInformacoes(arquivo, 5, 2, ",&");
+	}
+	
+	public void guardarTabuleiro() {
+		tabuleiro = guardarInformacoes("data/tabuleiro.csv", 34, 6, ",");
+	}
+	
+	public void guardarSorteOuReves() {
+		sr = guardarInformacoes("data/sr.csv", 21, 3, ",&");
 	}
 	
 	public void montarTabuleiro() {
@@ -68,4 +76,10 @@ public class Montador implements IMontador {
 		montarTabuleiro();
 		return tab;
 	}
+	
+	public String[][] requisitarSR() {
+		guardarSorteOuReves();
+		return sr;
+	}
+	
 }

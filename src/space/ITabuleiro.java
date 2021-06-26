@@ -7,7 +7,7 @@ import actor.Jogador;
 
 public interface ITabuleiro {
 	
-	public void definirTabuleiro(Celula[][] tab);
+	public void definirTabuleiro(Celula[][] tab, String[][] sr);
 	
 	public ArrayList<Object> moverJogador(int casas, Jogador jogador, Scanner teclado); 
 	

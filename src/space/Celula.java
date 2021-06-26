@@ -26,6 +26,6 @@ public abstract class Celula implements ICelula {
 		return nome;
 	}
 	
-	public abstract ArrayList<Object> efeito(Jogador jogador, int casas);
+	public abstract ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr);
 	
 }

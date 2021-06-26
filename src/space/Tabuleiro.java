@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import actor.Jogador;
+import exceptions.DirecaoInvalida;
 
 public class Tabuleiro implements ITabuleiro {
     private Celula[][] tab;
+    private String[][] sr;
     
-    public void definirTabuleiro(Celula[][] tab) {
+    public void definirTabuleiro(Celula[][] tab, String[][] sr) {
     	this.tab = tab;
+    	this.sr = sr;
     }
     
     public int[] direciona(String direcao, int[] coords) {
@@ -28,6 +31,10 @@ public class Tabuleiro implements ITabuleiro {
     	return coords;
     }
     
+    public boolean direcaoValida(String opcao, String escolha) {
+    	return (escolha.equals(opcao.substring(0, 1)) || escolha.equals(opcao.substring(1,  2)));
+    }
+    
     public ArrayList<Object> moverJogador(int casas, Jogador jogador, Scanner teclado) {
     	int coords[] = {jogador.getI(), jogador.getJ()};
     	while (casas > 0) {
@@ -36,8 +43,13 @@ public class Tabuleiro implements ITabuleiro {
     			coords = direciona(direcao, coords);
     		}
     		else if (direcao.equals("db") || direcao.equals("ec")) {
-    			System.out.println("Que caminho deseja tomar?");
-    			String escolha = teclado.nextLine();
+    			boolean valido = false;
+    			String escolha = null;
+    			do {
+    				System.out.println("Que caminho deseja tomar?");
+    				escolha = teclado.nextLine();
+    				valido = direcaoValida(direcao, escolha);
+    			} while (!valido);
     			jogador.setUltimaBifurcacao(escolha);
     			coords = direciona(escolha, coords);
     		}
@@ -54,7 +66,7 @@ public class Tabuleiro implements ITabuleiro {
     	}
     	jogador.setI(coords[0]);
     	jogador.setJ(coords[1]);
-    	return tab[coords[0]][coords[1]].efeito(jogador, casas);
+    	return tab[coords[0]][coords[1]].efeito(jogador, casas, sr);
     }
     
     public void imprimir(Jogador[] jogadores) {

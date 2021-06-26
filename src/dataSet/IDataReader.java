@@ -2,12 +2,10 @@ package dataSet;
 
 public interface IDataReader {
 
-	public void setDataSourceBoard(String dataSourceBoard);
+	public void setDataSource(String dataSource);
 	
-	public void setDataSourceQuestions(String dataSourceQuestions);
-
-	public String[][] requestBoard();
+	public void readData(int lines, int columns, String sep);
 	
-	public String[][] requestQuestions();
+	public String[][] requestData();
 	
 }
