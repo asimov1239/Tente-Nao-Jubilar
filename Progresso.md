@@ -47,7 +47,7 @@
 - As empresas são as seguintes junto com os alugueis: BCCL (40), CONPEC(50), CASA DO LAGO(40) e DAC(50);
 - O aluguel de uma empresa é calculada pegando o número dos dados e multiplicando pelo valor;
 
-### Update 5
+### Update 6
 - Implementados: movimentacao do jogador, execucao dos efeitos de cada tipo de células, como: perguntas e respostas, pagamento de aluguel, compra de propriedades, atraso, entre outros;
 - Classes Celula e Propriedade agora são classes abstratas, pois o método `efeito` é diferente para cada herdeira;
 - Criada classe Atraso, herdeira de Celula;
@@ -56,3 +56,10 @@
 - Foi utilizada a classe dinâmica ArrayList para representar os Pagamentos e o conjunto de Propriedades de um Jogador;
 - OBS: na linha 52 do Controle.java foi feito um Cast. Posteriormente Será estudada uma melhor alternativa;
 - Falta: implementar o efeito do Sorte ou Reves, implementar a interface gráfica, definir excecões;
+
+### Major Update 7
+- Interface criada usando JFrame!
+- Classe GUI criada e System.out substituidos por setOutputText;
+- Várias criações de botões, paineis e tabuleiro;
+- falta fazer diversos testes, além de arrumar a posição do peão azul;
+- Falta retirar o botão comprar!
