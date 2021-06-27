@@ -1,30 +1,28 @@
-package actor;
+package jogador;
 
 import java.util.ArrayList;
 
-import space.Propriedade;
+import model.Propriedade;
 
-public interface IPropriedadesJogador {
+public interface IJogador {
 	
 	public ArrayList<Propriedade> getPosses();
-	
-	public void adicionarPropriedade(Propriedade nova);
-	
-	public int getI();
-    
+
+    public int getID ();
+
+    public void setID (int id);
+
+    public void adicionarPropriedade(Propriedade nova);
+    public int getI();
     public int getJ();
+    
+    public int getAtraso();
     
     public String getNome();
     
     public String getUltimaBifurcacao();
     
-    public int getAtraso();
-    
     public int getCredito();
-    
-    public int getID ();
-
-    public void setID (int id);
     
     public void setI(int i);
     
@@ -35,5 +33,4 @@ public interface IPropriedadesJogador {
     public void setCredito(int qtde);
     
     public void setUltimaBifurcacao(String bifurcacao);
-    
 }

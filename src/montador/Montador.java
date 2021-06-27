@@ -1,12 +1,12 @@
-package builder;
+package montador;
 
 import dataSet.IDataReader;
-import space.Celula;
-import space.Empresa;
-import space.Instituto;
-import space.SorteOuReves;
-import space.Atraso;
-import space.Inicio;
+import model.Atraso;
+import model.Celula;
+import model.Empresa;
+import model.Inicio;
+import model.Instituto;
+import model.SorteOuReves;
 
 public class Montador implements IMontador {
 	private IDataReader dataReader;

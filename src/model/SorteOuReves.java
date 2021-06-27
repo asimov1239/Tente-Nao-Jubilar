@@ -1,10 +1,10 @@
-package space;
+package model;
 
 import java.util.Random;
 
-import GUI.IGUI;
-import actor.Jogador;
 import control.Pagamento;
+import jogador.Jogador;
+import view.IGUI;
 
 public class SorteOuReves extends Celula {
 	

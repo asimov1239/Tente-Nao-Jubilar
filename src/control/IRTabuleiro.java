@@ -1,6 +1,6 @@
 package control;
 
-import space.ITabuleiro;
+import model.ITabuleiro;
 
 public interface IRTabuleiro {
 	

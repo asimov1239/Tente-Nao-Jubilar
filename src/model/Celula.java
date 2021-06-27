@@ -1,8 +1,8 @@
-package space;
+package model;
 
-import GUI.IGUI;
-import actor.Jogador;
 import control.Pagamento;
+import jogador.Jogador;
+import view.IGUI;
 
 public abstract class Celula implements ICelula {
 	protected String direcao, tipo, nome;

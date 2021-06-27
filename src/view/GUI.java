@@ -1,9 +1,10 @@
-package GUI;
+package view;
 
-import actor.Jogador;
 import control.IControle;
+import jogador.Jogador;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 

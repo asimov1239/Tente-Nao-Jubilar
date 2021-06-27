@@ -1,9 +1,10 @@
-package space;
+package model;
 
 import java.util.Scanner;
-import GUI.IGUI;
-import actor.Jogador;
+
 import control.Pagamento;
+import jogador.Jogador;
+import view.IGUI;
 
 public class Tabuleiro implements ITabuleiro {
     private Celula[][] tab;

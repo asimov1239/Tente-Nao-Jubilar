@@ -1,4 +1,4 @@
-package space;
+package model;
 
 public abstract class Propriedade extends Celula {
 	protected int aluguel, custo;

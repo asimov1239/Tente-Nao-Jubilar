@@ -1,8 +1,9 @@
-package GUI;
+package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import actor.Jogador;
+
+import jogador.Jogador;
 
 public interface IGUI extends ActionListener, IRControle {
 

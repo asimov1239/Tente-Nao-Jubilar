@@ -1,7 +1,7 @@
-package builder;
+package montador;
 
 import dataSet.IDataReader;
-import space.Celula;
+import model.Celula;
 
 public interface IAcaoMontador {
 	public void connect(IDataReader dataReader);

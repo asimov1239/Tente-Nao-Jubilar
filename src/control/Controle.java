@@ -2,10 +2,10 @@ package control;
 
 import java.util.Scanner;
 
-import GUI.IGUI;
-import actor.Jogador;
-import builder.IMontador;
-import space.ITabuleiro;
+import jogador.Jogador;
+import model.ITabuleiro;
+import montador.IMontador;
+import view.IGUI;
 
 
 public class Controle implements IControle {
@@ -61,12 +61,11 @@ public class Controle implements IControle {
 	public void eliminarJogador(int indice) {
 		Jogador[] novos = new Jogador[jogadores.length - 1];
 		int k = 0;
-		for (int i = 0; i < novos.length; i++) {
-			if (i != indice) {
-				novos[i]= jogadores[k]; 
-			}
-			else {
-				i -= 1;
+		int i = 0;
+		while (i < novos.length) {
+			if (k != indice) {
+				novos[i] = jogadores[k];
+				i += 1;
 			}
 			k += 1;
 		}
@@ -74,13 +73,18 @@ public class Controle implements IControle {
 	}
 	
 	public boolean conferirVitoria() {
-		if (jogadores.length == 1) {
-			gui.setOutputText(jogadores[0].getNome() + " foi o único a não jubilar. Parabéns!");
-			return true;
-		}
 		for (int i = 0; i < jogadores.length; i++) {
 			if (jogadores[i].getCredito() >= 2000) {
 				gui.setOutputText(jogadores[i].getNome() + " conseguiu 2000 créditos. Parabéns pelo seu diploma!");
+				return true;
+			}
+			if (jogadores[i].getCredito() == 0) {
+				gui.setOutputText(jogadores[i].getNome() + " foi Jubilado! Boa sorte da próxima vez.");
+				eliminarJogador(i); 
+				i -= 1;
+			}
+			if (jogadores.length == 1) {
+				gui.setOutputText(jogadores[0].getNome() + " foi o único a não jubilar. Parabéns!");
 				return true;
 			}
 		}
@@ -111,10 +115,6 @@ public class Controle implements IControle {
 				continue;
 	    	}
 			executarTurno(jogadores[i]);
-			if (jogadores[i].getCredito() == 0) {
-				gui.setOutputText(jogadores[i].getNome() + " foi Jubilado! Boa sorte da próxima vez.");
-				eliminarJogador(i);
-			}
 			if (conferirVitoria()) {
 				return true;
 			}

@@ -1,13 +1,13 @@
 package control;
 
-import GUI.GUI;
-import GUI.IGUI;
-import builder.IMontador;
-import builder.Montador;
 import dataSet.DataReader;
 import dataSet.IDataReader;
-import space.ITabuleiro;
-import space.Tabuleiro;
+import model.ITabuleiro;
+import model.Tabuleiro;
+import montador.IMontador;
+import montador.Montador;
+import view.GUI;
+import view.IGUI;
 
 public class Main {
 

@@ -1,10 +1,10 @@
-package actor;
+package jogador;
 
 import java.util.ArrayList;
 
-import space.Propriedade;
+import model.Propriedade;
 
-public class Jogador implements IPropriedadesJogador {
+public class Jogador implements IJogador {
     private String nome, ultimaBifurcacao;
     private int credito, atraso;
     private ArrayList<Propriedade> posses;
@@ -16,7 +16,7 @@ public class Jogador implements IPropriedadesJogador {
         this.i = 0;
         this.j = 0;
         this.atraso = 0;
-        this.credito = 1000;
+        this.credito = 30;
         this.ultimaBifurcacao = null;
         this.posses = new ArrayList<Propriedade>();
     }

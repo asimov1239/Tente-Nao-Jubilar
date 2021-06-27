@@ -1,9 +1,10 @@
-package space;
+package model;
 
 import java.util.Scanner;
-import GUI.IGUI;
-import actor.Jogador;
+
 import control.Pagamento;
+import jogador.Jogador;
+import view.IGUI;
 
 public class Empresa extends Propriedade {
 	
