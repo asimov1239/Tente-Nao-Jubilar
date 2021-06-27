@@ -1,9 +1,8 @@
 package space;
 
-import java.util.ArrayList;
-
-import GUI.GUI;
+import GUI.IGUI;
 import actor.Jogador;
+import control.Pagamento;
 
 public abstract class Celula implements ICelula {
 	protected String direcao, tipo, nome;
@@ -26,6 +25,6 @@ public abstract class Celula implements ICelula {
 		return nome;
 	}
 	
-	public abstract ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr, GUI gui);
+	public abstract Pagamento efeito(Jogador jogador, int casas, String[][] sr, IGUI gui);
 	
 }

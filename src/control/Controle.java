@@ -1,13 +1,12 @@
 package control;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import GUI.GUI;
+import GUI.IGUI;
 import actor.Jogador;
 import builder.IMontador;
 import space.ITabuleiro;
-import space.Tabuleiro;
+
 
 public class Controle implements IControle {
 	private Jogador jogadores[];
@@ -15,13 +14,13 @@ public class Controle implements IControle {
 	private Dados dados = new Dados();
 	private IMontador montador;
 	private ITabuleiro tabuleiro;
-	private GUI gui;
+	private IGUI gui;
 
 	public Jogador[] getJogadores(){
 		return jogadores;
 	}
 
-	public void connect(GUI gui) {
+	public void connect(IGUI gui) {
 		this.gui = gui;
 	}
 
@@ -51,49 +50,86 @@ public class Controle implements IControle {
 		iniciarTabuleiro();
 	}
 	
+	public void realizarPagamento(Pagamento pagamento) {
+		for (int k = 0; k < jogadores.length; k++) {
+			if (jogadores[k].getNome().equals(pagamento.getProprietario())) {
+				jogadores[k].setCredito(pagamento.getCreditos());
+			}
+		}
+	}
+	
+	public void eliminarJogador(int indice) {
+		Jogador[] novos = new Jogador[jogadores.length - 1];
+		int k = 0;
+		for (int i = 0; i < novos.length; i++) {
+			if (i != indice) {
+				novos[i]= jogadores[k]; 
+			}
+			else {
+				i -= 1;
+			}
+			k += 1;
+		}
+		this.jogadores = novos;
+	}
+	
+	public boolean conferirVitoria() {
+		if (jogadores.length == 1) {
+			gui.setOutputText(jogadores[0].getNome() + " foi o único a não jubilar. Parabéns!");
+			return true;
+		}
+		for (int i = 0; i < jogadores.length; i++) {
+			if (jogadores[i].getCredito() >= 2000) {
+				gui.setOutputText(jogadores[i].getNome() + " conseguiu 2000 créditos. Parabéns pelo seu diploma!");
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void executarTurno(Jogador jogador) {
-		tabuleiro.imprimir(jogadores);
 		int casas = dados.rolar();
 		gui.mostrarTurno(casas);
-//		System.out.println("Voce tirou " + casas + " nos dados!");
-		ArrayList<Object> pagamento = tabuleiro.moverJogador(casas, jogador, teclado, gui);
+		Pagamento pagamento = tabuleiro.moverJogador(casas, jogador, teclado, gui);
 		if (pagamento != null) {
-			for (int k = 0; k < jogadores.length; k++) {
-				if (jogadores[k].getNome().equals(pagamento.get(0))) {
-					jogadores[k].setCredito((int)pagamento.get(1));
-				}
-			}
+			realizarPagamento(pagamento);
 		}
 		gui.esperarPassar();
 	}
 	
-	public void executarRodada() {
+	public boolean executarRodada() {
 		for (int i = 0; i < jogadores.length; i++) {
-			gui.setOutputText("Vez do Jogador: " + jogadores[i].getNome());
+			gui.setOutputText("Vez do Jogador: " + jogadores[i].getNome() + ". Role os dados.");
 			if (jogadores[i].getAtraso() > 0) {
 	    		jogadores[i].setAtraso(-1);
-	    		gui.setOutputText("Está atrasado!");
+	    		gui.setOutputText(jogadores[i].getNome() + " está atrasado!");
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(2500);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				continue;
 	    	}
 			executarTurno(jogadores[i]);
+			if (jogadores[i].getCredito() == 0) {
+				gui.setOutputText(jogadores[i].getNome() + " foi Jubilado! Boa sorte da próxima vez.");
+				eliminarJogador(i);
+			}
+			if (conferirVitoria()) {
+				return true;
+			}
 		}
+		return false;
 	}
 	
 	public void executarJogo() {
 		gui.iniciarGUI();
 		int numeroJogadores = gui.numeroJogadores();
-//		System.out.println("Quantos Jogadores?");
-//		int numeroJogadores = Integer.parseInt(teclado.nextLine());
 		iniciarJogo(numeroJogadores);
 		boolean fim = false;
-		for (int i = 0; i < 100; i++) {
-			System.out.println("-------RODADA " + (i+1) + " -------\n");
-			executarRodada();
+		while (!fim) {
+			fim = executarRodada();
 		}
+		gui.setOutputText("-- FIM DO JOGO! --");
 	}
 }

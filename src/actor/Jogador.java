@@ -4,12 +4,11 @@ import java.util.ArrayList;
 
 import space.Propriedade;
 
-public class Jogador implements IJogador {
+public class Jogador implements IPropriedadesJogador {
     private String nome, ultimaBifurcacao;
     private int credito, atraso;
     private ArrayList<Propriedade> posses;
     private int i, j;
-    private boolean jubilado;
     private int id;
 
     public Jogador(String nome) {
@@ -17,9 +16,8 @@ public class Jogador implements IJogador {
         this.i = 0;
         this.j = 0;
         this.atraso = 0;
-        this.credito = 2500;
+        this.credito = 50;
         this.ultimaBifurcacao = null;
-        this.jubilado = false;
         this.posses = new ArrayList<Propriedade>();
     }
 
@@ -62,10 +60,6 @@ public class Jogador implements IJogador {
     public int getCredito() {
     	return credito;
     }
-
-    public boolean getJubilado() {
-    	return jubilado;
-    }
     
     public void setI(int i) {
     	this.i = i;
@@ -81,9 +75,8 @@ public class Jogador implements IJogador {
     
     public void setCredito(int qtde) {
     	this.credito = credito + qtde;
-    	if (credito < 0) {
-    		credito = 0;
-    		jubilado = true;
+    	if (this.credito < 0) {
+    		this.credito = 0;
     	}
     }
     

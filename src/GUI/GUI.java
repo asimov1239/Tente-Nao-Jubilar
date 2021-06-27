@@ -1,14 +1,18 @@
 package GUI;
 
 import actor.Jogador;
-import control.Controle;
+import control.IControle;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class GUI extends JFrame implements ActionListener {
-    private Controle controle;
+public class GUI extends JFrame implements IGUI {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private IControle controle;
 //    private JLabel[] displays;
     private JLabel[] pecas = new JLabel[3];
     private JPanel panelTab, panelConsole;
@@ -23,7 +27,7 @@ public class GUI extends JFrame implements ActionListener {
     private String[] cor = {"vermelha", "verde", "azul"};
 
 
-    private void setTabuleiro() {
+    public void setTabuleiro() {
         panelTab = new JPanel();
         panelTab.setBackground(Color.gray);
         panelTab.setBounds(0,0, 450, 450);
@@ -57,7 +61,7 @@ public class GUI extends JFrame implements ActionListener {
         }
     }
 
-    private void setButtons() {
+    public void setButtons() {
         botaoComprar = new JButton("Comprar");
         botaoDados = new JButton("Rolar dados");
         botaoComprar.setHorizontalTextPosition(JButton.CENTER);
@@ -77,7 +81,7 @@ public class GUI extends JFrame implements ActionListener {
         setPlayerButtons();
     }
 
-    private void setConsole() {
+    public void setConsole() {
         panelConsole = new JPanel();
         panelConsole.setBackground(Color.gray);
         panelConsole.setBounds(0, 450, 450, 300);
@@ -87,7 +91,7 @@ public class GUI extends JFrame implements ActionListener {
         setTextField();
     }
 
-    private void setTextField() {
+    public void setTextField() {
         textArea = new JTextArea();
         textArea.setBounds(200, 20, 220, 120);
         textArea.setFont(new Font("Calibri", Font.PLAIN, 12));
@@ -99,7 +103,7 @@ public class GUI extends JFrame implements ActionListener {
         panelConsole.add(textArea);
     }
 
-    private void setInputField() {
+    public void setInputField() {
         inputField = new JTextField();
         inputField.setBounds(20, 90, 100, 30);
         inputField.setText("Escreva aqui");
@@ -116,7 +120,7 @@ public class GUI extends JFrame implements ActionListener {
         panelConsole.add(botaoAns);
     }
 
-    private void setPecas() {
+    public void setPecas() {
         pecas[0] = new JLabel(new ImageIcon("assets/RED.png"));
         pecas[1] = new JLabel(new ImageIcon("assets/GREEN.png"));
         pecas[2] = new JLabel(new ImageIcon("assets/BLUE.png"));
@@ -140,7 +144,7 @@ public class GUI extends JFrame implements ActionListener {
         setSize(465,650);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Tente Não Jubilar");
+        setTitle("Tente Não Jubilar!");
         this.setVisible(true);
     }
 
@@ -185,11 +189,11 @@ public class GUI extends JFrame implements ActionListener {
         return inputText;
     }
 
-    private void mostrarPeca(int num) {
+    public void mostrarPeca(int num) {
         pecas[num].setVisible(true);
     }
 
-    public void connect(Controle controle) {
+    public void connect(IControle controle) {
         this.controle = controle;
     }
 
@@ -259,7 +263,7 @@ public class GUI extends JFrame implements ActionListener {
     public void esperarPassar() {
         event = 3;
         aux = true;
-        while(aux) {
+        while (aux) {
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {

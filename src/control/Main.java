@@ -1,6 +1,7 @@
 package control;
 
 import GUI.GUI;
+import GUI.IGUI;
 import builder.IMontador;
 import builder.Montador;
 import dataSet.DataReader;
@@ -11,8 +12,8 @@ import space.Tabuleiro;
 public class Main {
 
     public static void main(String[] args) {
-    	Controle controle = new Controle();
-		GUI gui = new GUI();
+    	IControle controle = new Controle();
+		IGUI gui = new GUI();
     	IMontador montador = new Montador();
     	ITabuleiro tabuleiro = new Tabuleiro();
     	IDataReader dataReader = new DataReader();

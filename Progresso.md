@@ -63,3 +63,10 @@
 - Várias criações de botões, paineis e tabuleiro;
 - falta fazer diversos testes, além de arrumar a posição do peão azul;
 - Falta retirar o botão comprar!
+
+### Update 8
+- Continuacão da fase de testes;
+- Ajuste de pequenos erros, mensagens, definicão das condicões de vitória, efeito do Sorte Ou Reves e outras celulas, eliminacão de jogadores, entre outros;
+- Criada Classe Pagamento para realizar a cobranca de aluguel;
+- Classe GUI agora implementa a interface IGUI (para fins de adequacão ao restante do projeto);
+- Faltam: pequenos detalhes relacionados à interface gráfica, fase final do projeto.

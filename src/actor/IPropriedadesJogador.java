@@ -1,8 +1,12 @@
 package actor;
 
+import java.util.ArrayList;
+
 import space.Propriedade;
 
 public interface IPropriedadesJogador {
+	
+	public ArrayList<Propriedade> getPosses();
 	
 	public void adicionarPropriedade(Propriedade nova);
 	
@@ -18,7 +22,9 @@ public interface IPropriedadesJogador {
     
     public int getCredito();
     
-    public boolean getJubilado();
+    public int getID ();
+
+    public void setID (int id);
     
     public void setI(int i);
     

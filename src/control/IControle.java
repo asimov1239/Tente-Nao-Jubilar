@@ -1,5 +1,5 @@
 package control;
 
-public interface IControle extends IAcaoControle, IRMontador, IRTabuleiro {
+public interface IControle extends IAcaoControle, IRMontador, IRTabuleiro, IRGUI {
 
 }

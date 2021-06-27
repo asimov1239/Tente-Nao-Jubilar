@@ -1,10 +1,9 @@
 package space;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-
-import GUI.GUI;
+import GUI.IGUI;
 import actor.Jogador;
+import control.Pagamento;
 
 public class Tabuleiro implements ITabuleiro {
     private Celula[][] tab;
@@ -35,8 +34,29 @@ public class Tabuleiro implements ITabuleiro {
     	return (escolha.equals(opcao.substring(0, 1)) || escolha.equals(opcao.substring(1,  2)));
     }
     
-    public ArrayList<Object> moverJogador(int casas, Jogador jogador, Scanner teclado, GUI gui) {
+    public void mostrarOpcoes(IGUI gui, String opcoes, int casasRestantes) {
+    	String[] dir = new String[2];
+    	for (int i = 0; i < opcoes.length(); i++) {
+    		if (opcoes.charAt(i) == 'd') {
+    			dir[i]= "a direita";
+    		}
+    		if (opcoes.charAt(i) == 'e') {
+    			dir[i] = "a esquerda";
+    		}
+    		if (opcoes.charAt(i) == 'c') {
+    			dir[i] = "cima";
+    		}
+    		if (opcoes.charAt(i) == 'b') {
+    			dir[i] = "baixo";
+    		}
+    	}
+    	gui.setOutputText("Que caminho deseja tomar?\n\nEscreva e envie a letra '" + opcoes.charAt(0) + "' se quiser ir para " + dir[0]
+    			+ " ou '" + opcoes.charAt(1) + "' se quiser ir para " + dir[1] + ". Você ainda tem " + casasRestantes + " casa(s) para andar.");
+    }
+    
+    public Pagamento moverJogador(int casas, Jogador jogador, Scanner teclado, IGUI gui) {
     	int coords[] = {jogador.getI(), jogador.getJ()};
+    	int casasDado = Integer.valueOf(casas);
     	while (casas > 0) {
     		String direcao = tab[coords[0]][coords[1]].getDirecao();
     		if (direcao.length() == 1) {
@@ -46,10 +66,8 @@ public class Tabuleiro implements ITabuleiro {
     		else if (direcao.equals("db") || direcao.equals("ec")) {
     			boolean valido = false;
     			String escolha = null;
-				gui.setOutputText("Que caminho deseja tomar?\n\nEscreva e envie a letra c se quiser ir \npara cima, ou a letra b se quiser ir \npara baixo" +
-						", a letra d se quiser prosse-guir para a direita, enfim a letra e se quiser ir para a esquerda.\n ");
+				mostrarOpcoes(gui, direcao, casas);
     			do {
-//    				System.out.println("Que caminho deseja tomar?");
 					escolha = gui.tomarDecisao(direcao);
     				valido = direcaoValida(direcao, escolha);
     			} while (!valido);
@@ -72,9 +90,11 @@ public class Tabuleiro implements ITabuleiro {
     	}
     	jogador.setI(coords[0]);
     	jogador.setJ(coords[1]);
-    	return tab[coords[0]][coords[1]].efeito(jogador, casas, sr, gui);
+    	return tab[coords[0]][coords[1]].efeito(jogador, casasDado, sr, gui);
     }
     
+    
+    /*
     public void imprimir(Jogador[] jogadores) {
     	for (int i = 0; i < tab.length; i++) {
     		for (int j = 0; j < tab[i].length; j++) {
@@ -101,5 +121,5 @@ public class Tabuleiro implements ITabuleiro {
     		System.out.println(jogadores[k].getNome() + ": " + jogadores[k].getCredito());
     	}
     }
-    
+    */
 }

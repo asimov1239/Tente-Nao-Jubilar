@@ -1,14 +1,15 @@
 package space;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-import GUI.GUI;
+import GUI.IGUI;
 import actor.Jogador;
+import control.Pagamento;
 
 public class SorteOuReves extends Celula {
 	
-	public ArrayList<Object> efeito(Jogador jogador, int casas, String[][] sr, GUI gui) {
+	public Pagamento efeito(Jogador jogador, int casas, String[][] sr, IGUI gui) {
+		gui.setOutputText("Sorte Ou Revés!");
 		Random random = new Random();
 		int indice = random.nextInt(sr.length);
 		gui.setOutputText(sr[indice][0]);
