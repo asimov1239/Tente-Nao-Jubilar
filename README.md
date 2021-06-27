@@ -1,64 +1,67 @@
 # Projeto Tente Nao Jubilar
 
 # Descrição Resumida do Projeto/Jogo
-O Tente Não Jubilar é uma versão adaptada do Monopólio (Ou Banco Imobiliário) para o mundo universitário, em que o objetivo é acumular Créditos através de fazer aulas e provas, seus adversários deverão parar nos institutos também para fazer as aulas que você já fez, gerando mais créditos! Vence o indíviduo que conseguir uma certa quantidade de créditos para passar de ano sem jubilar.
+O Tente Não Jubilar é uma versão do Monopólio (ou Banco Imobiliário) adaptada para o mundo universitário, em que o objetivo é acumular créditos fazendo aulas e provas. Seus adversários também deverão parar nos institutos da Unicamp para fazer as aulas que você já fez, gerando mais créditos! Vence o indíviduo que conseguir 2000 créditos para passar de ano sem jubilar.
 
 # Equipe
 * Gabriel Bonfim Silva de Moraes - 216111
 * Leandro Ponsano Corimbaba - 239084
 
 # Vídeos do Projeto
-
-> Segue o [vídeo do projeto.](https://drive.google.com/file/d/1C1yYbuWAi0JLtMh-GVp5yADwuRK5mTpg/view?usp=sharing)
+## Vídeo da Prévia
+Segue o [vídeo da prévia.](https://drive.google.com/file/d/1C1yYbuWAi0JLtMh-GVp5yADwuRK5mTpg/view?usp=sharing)
+## Vídeo do Jogo
+A colocar.
 
 # Slides do Projeto
+## Slides da Prévia
+Segue os [slides da prévia.](/assets/outdated_assets/TrabalhoMC322.pptx)
+## Slides da Apresentação Final
+A colocar.
+## Relatório de Evolução
+Veja o [progresso](Progresso.md).
 
-> Segue os [slides do projeto.](/assets/outdated_assets/TrabalhoMC322.pptx)
+# Destaques de Código
+A colocar.
+
+# Destaques de Pattern
+## Diagrama do Pattern
+A colocar.
+## Código do Pattern
+A colocar.
+
+# Conclusões e Trabalhos Futuros
+A colocar.
 
 # Documentação dos Componentes
-## Diagramas
-### Diagrama Geral do Projeto
-Será atualizado até o fim do projeto.
-![Diagrama](assets/outdated_assets/Diagrama.jpeg)
+# Diagramas
+## Diagrama Geral do Projeto
+A colocar.
+## Diagrama Geral de Componentes
+![DiagramaComponentes](assets/DiagramaGeralComponentes.png)
 
-### Diagrama Geral de Componentes
-![DiagramaComponentes](assets/outdated_assets/DiagramaComponentes.png)
+## Componente dataSet
+Responsável pela leitura dos arquivos de entrada, que contém informações importantes como: mapa do tabuleiro, custos e aluguéis, perguntas e respostas, efeitos do Sorte ou Revés e outros.  
+![dataSet](assets/DiagramaDataSet.png)
 
-### Componente Celula
-Representa cada célula do tabuleiro, e pode ser do tipo Instituto, Empresa, Sorte Ou Revés e outros. Armazenará os preços de compra e aluguel.
-![Celula](assets/outdated_assets/DiagramaCelula.png)
+## Componente Montador
+Responsável por montar o tabuleiro, recebendo as informações do dataSet e passando a matriz de célula para o tabuleiro. É "contratado" pelo Control.  
+![Montador](assets/DiagramaMontador.png)
 
-### Componente Tabuleiro
-Sera compostO por uma matriz de células, e fará a movimentacão dos jogadores, bem como lhe oferecer a compra de propriedades.
-![Tabuleiro](assets/outdated_assets/DiagramaTabuleiro.png)
-#### Ficha Técnica
+## Componente Model
+Representa o espaço celular, ou seja, o tabuleiro e as células. Realiza a movimentação dos jogadores e executa o efeito de cada célula.  
+![Model](assets/DiagramaModel.png)
 
-### Componente Jogador
-Representa cada universitário, e armazena sua quantidade de créditos e as propriedades que possui.
-![Jogador](assets/outdated_assets/DiagramaJogador.png)
+## Componente Jogador
+Representa cada universitário, e armazena sua quantidade de créditos e as propriedades que possui.  
+A colocar.
 
-### Componente Controle
-Será o responsável por conduzir o jogo, as rodadas e os turnos.
-![Controle](assets/outdated_assets/DiagramaControle.png)
+## Componente Control
+Será o responsável por conduzir o jogo, as rodadas e os turnos.  
+![Control](assets/DiagramaControl.png)
 
-### Componente Montador
-Será o responsável por criar as células e montar o tabuleiro.
-![Montador](assets/outdated_assets/DiagramaMontador.png)
+## Componente View
+Contratado pelo Control, é quem transporta o jogo para a interface gráfica criada.  
+![View](assets/DiagramaView.png)
 
-### Componente DataSet
-Esse componente fará o intermédio entre os outros componentes e os arquivos na pasta `data` (arquivos de entrada).
-![DataSet](assets/outdated_assets/DiagramaDataSEt.png)
 
-# Tabuleiro e Peças Utilizadas
-
-## Tabuleiro Antigo:
-![Tabuleiro](assets/outdated_assets/tabuleiro_antigo.png)
-
-## Tabuleiro Atualizado:
-Atualizamos o tabuleiro para deixa-lo mais complexo, criando atalhos e novas instituições.
-
-![Tabuleiro](assets/Tabuleiro.jpg)
-
-![Peça Verde](assets/GREEN.png)
-![Peça Vermelha](assets/RED.png)
-![Peça Azul](assets/BLUE.png)
