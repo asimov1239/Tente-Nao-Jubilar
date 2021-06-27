@@ -16,8 +16,9 @@ public class GUI extends JFrame implements IGUI {
 //    private JLabel[] displays;
     private JLabel[] pecas = new JLabel[3];
     private JPanel panelTab, panelConsole;
-    private JButton botaoComprar,botaoDados, botaoAns;
+    private JButton botaoDados, botaoAns;
     private JButton[] playerButtons;
+    private boolean[] playerButtonsStatus = {true,true,true};
     private JTextField inputField;
     private JTextArea textArea;
     private int jogadores;
@@ -62,21 +63,13 @@ public class GUI extends JFrame implements IGUI {
     }
 
     public void setButtons() {
-        botaoComprar = new JButton("Comprar");
         botaoDados = new JButton("Rolar dados");
-        botaoComprar.setHorizontalTextPosition(JButton.CENTER);
         botaoDados.setHorizontalTextPosition(JButton.CENTER);
-        botaoComprar.setFont(new Font("Calibri", Font.BOLD, 12));
         botaoDados.setFont(new Font("Calibri", Font.BOLD, 12));
-        botaoComprar.setBounds(20, 30, 100, 25);
-        botaoDados.setBounds(20, 60, 100, 25);
+        botaoDados.setBounds(20, 20, 100, 60);
         botaoDados.setFocusable(false);
-        botaoComprar.setFocusable(false);
-        botaoComprar.setEnabled(false);
         botaoDados.setEnabled(false);
         botaoDados.addActionListener(this);
-        botaoComprar.addActionListener(this);
-        panelConsole.add(botaoComprar);
         panelConsole.add(botaoDados);
         setPlayerButtons();
     }
@@ -93,8 +86,8 @@ public class GUI extends JFrame implements IGUI {
 
     public void setTextField() {
         textArea = new JTextArea();
-        textArea.setBounds(200, 20, 220, 120);
-        textArea.setFont(new Font("Calibri", Font.PLAIN, 12));
+        textArea.setBounds(200, 10, 220, 130);
+        textArea.setFont(new Font("Calibri", Font.PLAIN, 11));
         textArea.setMargin(new Insets(2,4,2,5));
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
@@ -115,7 +108,7 @@ public class GUI extends JFrame implements IGUI {
         botaoAns.addActionListener(this);
         botaoAns.setFont(new Font("Calibri", Font.ITALIC, 8));
         botaoAns.setHorizontalTextPosition(JButton.CENTER);
-        botaoAns.setBounds(50, 120, 60, 20);
+        botaoAns.setBounds(20, 120, 100, 20);
         panelConsole.add(inputField);
         panelConsole.add(botaoAns);
     }
@@ -124,9 +117,9 @@ public class GUI extends JFrame implements IGUI {
         pecas[0] = new JLabel(new ImageIcon("assets/RED.png"));
         pecas[1] = new JLabel(new ImageIcon("assets/GREEN.png"));
         pecas[2] = new JLabel(new ImageIcon("assets/BLUE.png"));
-        pecas[0].setBounds(40,30,50,50);
-        pecas[1].setBounds(45,30,50,50);
-        pecas[2].setBounds(35,30,50,50);
+        pecas[0].setBounds(50,30,50,50);
+        pecas[1].setBounds(55,30,50,50);
+        pecas[2].setBounds(45,30,50,50);
         panelTab.add(pecas[0]);
         panelTab.add(pecas[1]);
         panelTab.add(pecas[2]);
@@ -150,14 +143,15 @@ public class GUI extends JFrame implements IGUI {
 
     public void setOutputText(String text) {
         textArea.setText(text);
+        gameWait(1500);
     }
 
     public int numeroJogadores() {
         this.jogadores = 0;
         this.event = 1;
-        setOutputText("Bem vindo ao Tente Não Jubilar!\n" +
-                "O simulador super realista de \nsobrevivência na UNICAMP! \n" +
-                "Quantos jogadores vão participar\ndessa loucura? (Escolha 2 ou 3)\n" +
+        setOutputText("Bem vindo ao Tente Não Jubilar!" +
+                " O simulador super realista de sobrevivência na UNICAMP! " +
+                "Quantos jogadores vão participar dessa loucura? (Escolha 2 ou 3)\n" +
                 "\nBOA SORTE!");
 
         while(jogadores == 0) {
@@ -171,16 +165,20 @@ public class GUI extends JFrame implements IGUI {
         return jogadores;
     }
 
+    public void gameWait(int ms){
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String lerJogadores(Jogador jogador, int num) {
         inputText = null;
         setOutputText("\nQual o nome do jogador da peça\n" + cor[num] + " ?\n" + outputText);
 
         while(inputText == null) {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            gameWait(200);
         }
         playerButtons[num].setText(inputText);
         playerButtons[num].setVisible(true);
@@ -203,11 +201,7 @@ public class GUI extends JFrame implements IGUI {
         botaoDados.setEnabled(true);
         botaoDados.setText("Rodar Dados");
         while(aux) {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            gameWait(200);
         }
         botaoDados.setText("Passar Turno");
         outputText = "Voce tirou " + casas + " nos dados!";
@@ -226,11 +220,7 @@ public class GUI extends JFrame implements IGUI {
         } else {
             y -= 50;
         }
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        gameWait(500);
         pecas[id].setBounds(x, y, 50, 50);
     }
 
@@ -238,11 +228,7 @@ public class GUI extends JFrame implements IGUI {
         inputText = "x";
         event = 2;
         while (!(inputText.charAt(0) == direcao.charAt(0)) && !(inputText.charAt(0) == direcao.charAt(1))) {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            gameWait(200);
         }
         return inputText;
     }
@@ -251,11 +237,7 @@ public class GUI extends JFrame implements IGUI {
         event = 2;
         this.aux = true;
         while(aux) {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            gameWait(200);
         }
         return inputText;
     }
@@ -290,22 +272,33 @@ public class GUI extends JFrame implements IGUI {
             Jogador[] jogadores = controle.getJogadores();
             for(int i = 0; i < jogadores.length; i++) {
                 if(e.getSource() == playerButtons[i]) {
-                    String text = "Créditos: " + jogadores[i].getCredito() +
-                            "\nEssas são as seguintes possessões:\n";
-                    for(int j = 0; j < jogadores[i].getPosses().size(); j++){
-                        text += jogadores[i].getPosses().get(j).getNome() + "  ";
+                    if(playerButtonsStatus[i] == true) {
+                        outputText = textArea.getText();
+                        String text = "Créditos: " + jogadores[i].getCredito() +
+                                "\nEssas são as seguintes possessões:\n";
+                        for (int j = 0; j < jogadores[i].getPosses().size(); j++) {
+                            text += jogadores[i].getPosses().get(j).getNome() + "  ";
+                        }
+                        for(int k = 0; k < jogadores.length;k++){
+                            if(i!=k)
+                                playerButtons[k].setEnabled(false);
+                        }
+                        textArea.setText(text);
+                        botaoDados.setEnabled(false);
+                        playerButtonsStatus[i] = false;
+                        playerButtons[i].setText("Voltar");
+                    } else {
+                        for(int k = 0; k < jogadores.length; k++) {
+                            playerButtons[k].setEnabled(true);
+                        }
+                        botaoDados.setEnabled(true);
+                        textArea.setText(outputText);
+                        playerButtonsStatus[i] = true;
+                        playerButtons[i].setText(jogadores[i].getNome());
                     }
-                    setOutputText(text);
                 }
             }
         }
     }
 
-
-//    public void createDisplays() {
-//
-//        for(int i = 0; i < controle.jogadores.length) {
-//
-//        }
-//    }
 }
