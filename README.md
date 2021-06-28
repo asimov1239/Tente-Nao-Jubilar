@@ -1,4 +1,4 @@
-# Projeto Tente Nao Jubilar
+# Projeto Tente Não Jubilar
 
 # Descrição Resumida do Projeto/Jogo
 O Tente Não Jubilar é uma versão do Monopólio (ou Banco Imobiliário) adaptada para o mundo universitário, em que o objetivo é acumular créditos fazendo aulas e provas. Seus adversários também deverão parar nos institutos da Unicamp para fazer as aulas que você já fez, gerando mais créditos! Vence o indíviduo que conseguir 2000 créditos para passar de ano sem jubilar.
@@ -113,7 +113,7 @@ Poderia, também, ter sido usado o Factory Pattern, que pode vir a ser utilizado
 
 ## Componente dataSet
 Responsável pela leitura dos arquivos de entrada, que contém informações importantes como: mapa do tabuleiro, custos e aluguéis, perguntas e respostas, efeitos do Sorte ou Revés e outros.  
-![dataSet](assets/DiagramaDataSet.png)
+![dataSet](assets/DiagramaDataSet.png)  
 **Ficha Técnica**
 * Classe: `src/dataSet/DataReader.java`
 * Autores: Leandro Ponsano Corimbaba e André Santanche
@@ -121,11 +121,11 @@ Responsável pela leitura dos arquivos de entrada, que contém informações imp
 
 ## Componente Montador
 Responsável por montar o tabuleiro, recebendo as informações do dataSet e passando a matriz de célula para o tabuleiro. É "contratado" pelo Control.  
-![Montador](assets/DiagramaMontador.png)
+![Montador](assets/DiagramaMontador.png)  
 **Ficha Técnica**
 * Classe: `src/montador/Montador.java`
 * Autores: Leandro Ponsano Corimbaba
-* Interfaces: `src/montador/IMontador.java`, `src/montador/IAcaoMontador.java` e `src/montador/IRDataReader.java`
+* Interfaces: `src/montador/IMontador.java`, `src/montador/IAcaoMontador.java` e `src/montador/IRDataReader.java`  
 Interface agregadora do componente em java:
 
 ```
@@ -135,11 +135,11 @@ public interface IMontador extends IAcaoMontador, IRDataReader {
 
 ## Componente Model
 Representa o espaço celular, ou seja, o tabuleiro e as células. Realiza a movimentação dos jogadores e executa o efeito de cada célula.  
-![Model](assets/DiagramaModel.png)
+![Model](assets/DiagramaModel.png)  
 **Ficha Técnica**
 * Classe: `src/model/Tabuleiro.java`, `src/model/Celula.java`, `src/model/Propriedade.java`, `src/model/Inicio.java`, `src/model/Instituto.java`, `src/model/Empresa.java`, `src/model/Atraso.java` e `src/model/SorteOuReves.java`
 * Autores: Leandro Ponsano Corimbaba e Gabriel Bonfim Silva de Moraes
-* Interfaces: `src/model/ITabuleiro.java`, `src/model/IAcaoCelula.java` , `src/model/IPropriedadesCelula.java` e `src/model/ICelula.java`.
+* Interfaces: `src/model/ITabuleiro.java`, `src/model/IAcaoCelula.java` , `src/model/IPropriedadesCelula.java` e `src/model/ICelula.java`.  
 Interface agregadora do componente em java:
 
 ```
@@ -149,11 +149,11 @@ public interface ICelula extends IAcaoCelula, IPropriedadesCelula {
 
 ## Componente Control
 Será o responsável por conduzir o jogo, as rodadas e os turnos.  
-![Control](assets/DiagramaControl.png)
+![Control](assets/DiagramaControl.png)  
 **Ficha Técnica**
 * Classe: `src/control/Controle.java`, `src/control/Dados.java`, `src/control/Pagamento.java` e `src/control/Main.java`
 * Autores: Leandro Ponsano Corimbaba e Gabriel Bonfim Silva de Moraes
-* Interfaces: `src/control/IAcaoControle.java`, `src/control/IControle.java`, `src/control/IRGUI.java`, `src/control/IRMontador.java` e `src/control/IRTabuleiro.java`
+* Interfaces: `src/control/IAcaoControle.java`, `src/control/IControle.java`, `src/control/IRGUI.java`, `src/control/IRMontador.java` e `src/control/IRTabuleiro.java`  
 Interface agregadora do componente em java:
 
 ```
@@ -163,11 +163,11 @@ public interface IControle extends IAcaoControle, IRMontador, IRTabuleiro, IRGUI
 
 ## Componente View
 Contratado pelo Control, é quem transporta o jogo para a interface gráfica criada.  
-![View](assets/DiagramaView.png)
+![View](assets/DiagramaView.png)  
 **Ficha Técnica**
 * Classe: `src/view/GUI.java`
 * Autores: Gabriel Bonfim Silva de Moraes
-* Interfaces: `src/view/IGUI.java`, `src/view/IAcaoGUI.java` e `src/IRControle/.java`
+* Interfaces: `src/view/IGUI.java`, `src/view/IAcaoGUI.java` e `src/IRControle/.java`  
 Interface agregadora do componente em java:
 
 ```
@@ -333,7 +333,7 @@ Interface provida para apresentação da interface gráfica.
 
 ```
 public interface IAcaoGUI extends ActionListener {
-	public void setTabuleiro();
+    public void setTabuleiro();
     public void setPlayerButtons();
     public void setButtons();
     public void setConsole();
