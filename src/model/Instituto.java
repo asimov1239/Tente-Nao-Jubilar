@@ -1,7 +1,7 @@
 package model;
 
 import control.Pagamento;
-import jogador.Jogador;
+import jogador.IJogador;
 import view.IGUI;
 
 import java.util.Random;
@@ -15,7 +15,7 @@ public class Instituto extends Propriedade {
 		this.questoes = questoes;
 	}
 	
-	public Pagamento efeito(Jogador jogador, int casas, String[][] sr, IGUI gui) {
+	public Pagamento efeito(IJogador jogador, int casas, String[][] sr, IGUI gui) {
 		gui.setOutputText("Você caiu em " + nome + "!");
 		Scanner teclado = new Scanner(System.in);
 		Pagamento pagamento = null;

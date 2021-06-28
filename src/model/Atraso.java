@@ -1,7 +1,7 @@
 package model;
 
 import control.Pagamento;
-import jogador.Jogador;
+import jogador.IJogador;
 import view.IGUI;
 
 public class Atraso extends Celula {
@@ -11,7 +11,7 @@ public class Atraso extends Celula {
 		this.rodadas = rodadas;
 	}
 	
-	public Pagamento efeito(Jogador jogador, int casas, String[][] sr, IGUI gui) {
+	public Pagamento efeito(IJogador jogador, int casas, String[][] sr, IGUI gui) {
 		if(rodadas == 1) {
 			gui.setOutputText("Hora de comer aquele misto de carnes gostoso.\n\n Vai atrasar um turno!");
 		} else if (rodadas == 2) {

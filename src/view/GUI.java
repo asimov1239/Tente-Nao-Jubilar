@@ -1,10 +1,8 @@
 package view;
 
 import control.IControle;
-import jogador.Jogador;
-
+import jogador.IJogador;
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -155,7 +153,7 @@ public class GUI extends JFrame implements IGUI {
                 "Quantos jogadores vão participar dessa loucura? (Escolha 2 ou 3)\n" +
                 "\nBOA SORTE!");
 
-        while(jogadores == 0) {
+        while (jogadores == 0) {
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
@@ -174,17 +172,18 @@ public class GUI extends JFrame implements IGUI {
         }
     }
 
-    public String lerJogadores(Jogador jogador, int num) {
-        inputText = null;
+    public String lerJogadores(int num) {
         setOutputText("\nQual o nome do jogador da peça\n" + cor[num] + " ?\n" + outputText);
-
-        while(inputText == null) {
-            gameWait(200);
-        }
+        do {
+        	inputText = null;
+        	while (inputText == null) {
+        		gameWait(200);
+        	}
+        } while (controle.nomeJaEscolhido(inputText));
         playerButtons[num].setText(inputText);
         playerButtons[num].setVisible(true);
-        mostrarPeca(num);
         outputText += cor[num] + ": " + inputText + "\n";
+        mostrarPeca(num);
         return inputText;
     }
 
@@ -270,7 +269,7 @@ public class GUI extends JFrame implements IGUI {
         } else if((e.getSource() == botaoDados) && event == 3) {
             this.aux = false;
         } else {
-            Jogador[] jogadores = controle.getJogadores();
+            IJogador[] jogadores = controle.getJogadores();
             for(int i = 0; i < jogadores.length; i++) {
                 if(e.getSource() == playerButtons[i]) {
                     if(playerButtonsStatus[i] == true) {

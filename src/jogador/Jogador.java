@@ -16,7 +16,7 @@ public class Jogador implements IJogador {
         this.i = 0;
         this.j = 0;
         this.atraso = 0;
-        this.credito = 30;
+        this.credito = 200;
         this.ultimaBifurcacao = null;
         this.posses = new ArrayList<Propriedade>();
     }

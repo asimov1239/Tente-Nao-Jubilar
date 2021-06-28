@@ -70,3 +70,10 @@
 - Criada Classe Pagamento para realizar a cobranca de aluguel;
 - Classe GUI agora implementa a interface IGUI (para fins de adequacão ao restante do projeto);
 - Faltam: pequenos detalhes relacionados à interface gráfica, fase final do projeto.
+
+### Update 9
+- Correção de diversos bugs: eliminação de jogadores, nomes repetidos, pagamentos, ajuste de interfaces etc;
+- Mudança no tabuleiro: casas exame e empresas trocadas de lugar;
+- Expansão da documentação do projeto (em [README.md](README.md));
+- Definição dos créditos iniciais e finais;
+- Finalização do projeto.

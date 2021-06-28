@@ -1,10 +1,8 @@
 package montador;
 
-import dataSet.IDataReader;
 import model.Celula;
 
 public interface IAcaoMontador {
-	public void connect(IDataReader dataReader);
 	
 	public void guardarQuestoes(String arquivo);
 	

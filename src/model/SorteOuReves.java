@@ -1,14 +1,13 @@
 package model;
 
 import java.util.Random;
-
 import control.Pagamento;
-import jogador.Jogador;
+import jogador.IJogador;
 import view.IGUI;
 
 public class SorteOuReves extends Celula {
 	
-	public Pagamento efeito(Jogador jogador, int casas, String[][] sr, IGUI gui) {
+	public Pagamento efeito(IJogador jogador, int casas, String[][] sr, IGUI gui) {
 		gui.setOutputText("Sorte Ou Revés!");
 		Random random = new Random();
 		int indice = random.nextInt(sr.length);

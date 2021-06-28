@@ -2,6 +2,7 @@ package control;
 
 import java.util.Scanner;
 
+import jogador.IJogador;
 import jogador.Jogador;
 import model.ITabuleiro;
 import montador.IMontador;
@@ -9,14 +10,14 @@ import view.IGUI;
 
 
 public class Controle implements IControle {
-	private Jogador jogadores[];
+	private IJogador jogadores[];
 	private Scanner teclado = new Scanner(System.in);
 	private Dados dados = new Dados();
 	private IMontador montador;
 	private ITabuleiro tabuleiro;
 	private IGUI gui;
 
-	public Jogador[] getJogadores(){
+	public IJogador[] getJogadores(){
 		return jogadores;
 	}
 
@@ -32,10 +33,20 @@ public class Controle implements IControle {
 		this.montador = montador;
 	}
 	
+	public boolean nomeJaEscolhido(String nome) {
+		for (int i = 0; i < jogadores.length; i++) {
+			if (jogadores[i] != null && jogadores[i].getNome().equals(nome)) {
+				gui.setOutputText("O nome " + nome + " já foi escolhido, digite outro!");
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void iniciarJogadores(int numero) {
 		jogadores = new Jogador[numero];
 		for (int i = 0; i < numero; i++) {
-			String nome = gui.lerJogadores(jogadores[i], i);
+			String nome = gui.lerJogadores(i);
 			jogadores[i] = new Jogador(nome);
 			jogadores[i].setID(i);
 		}
@@ -59,7 +70,7 @@ public class Controle implements IControle {
 	}
 	
 	public void eliminarJogador(int indice) {
-		Jogador[] novos = new Jogador[jogadores.length - 1];
+		IJogador[] novos = new Jogador[jogadores.length - 1];
 		int k = 0;
 		int i = 0;
 		while (i < novos.length) {
@@ -91,7 +102,7 @@ public class Controle implements IControle {
 		return false;
 	}
 	
-	public void executarTurno(Jogador jogador) {
+	public void executarTurno(IJogador jogador) {
 		int casas = dados.rolar();
 		gui.mostrarTurno(casas);
 		Pagamento pagamento = tabuleiro.moverJogador(casas, jogador, teclado, gui);

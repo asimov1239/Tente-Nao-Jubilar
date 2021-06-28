@@ -1,7 +1,7 @@
 package model;
 
 import control.Pagamento;
-import jogador.Jogador;
+import jogador.IJogador;
 import view.IGUI;
 
 public abstract class Celula implements ICelula {
@@ -25,6 +25,6 @@ public abstract class Celula implements ICelula {
 		return nome;
 	}
 	
-	public abstract Pagamento efeito(Jogador jogador, int casas, String[][] sr, IGUI gui);
+	public abstract Pagamento efeito(IJogador jogador, int casas, String[][] sr, IGUI gui);
 	
 }

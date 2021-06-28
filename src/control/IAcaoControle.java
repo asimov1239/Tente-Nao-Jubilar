@@ -1,19 +1,12 @@
 package control;
 
-import jogador.Jogador;
-import model.ITabuleiro;
-import montador.IMontador;
-import view.IGUI;
+import jogador.IJogador;
 
 public interface IAcaoControle {
 	
-	public Jogador[] getJogadores();
-
-	public void connect(IGUI gui);
-
-	public void connect(ITabuleiro tabuleiro) ;
+	public IJogador[] getJogadores();
 	
-	public void connect(IMontador montador);
+	public boolean nomeJaEscolhido(String nome);
 	
 	public void iniciarJogadores(int numero) ;
 	
@@ -27,7 +20,7 @@ public interface IAcaoControle {
 	
 	public boolean conferirVitoria();
 	
-	public void executarTurno(Jogador jogador) ;
+	public void executarTurno(IJogador jogador) ;
 	
 	public boolean executarRodada();
 	

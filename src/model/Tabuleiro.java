@@ -3,7 +3,7 @@ package model;
 import java.util.Scanner;
 
 import control.Pagamento;
-import jogador.Jogador;
+import jogador.IJogador;
 import view.IGUI;
 
 public class Tabuleiro implements ITabuleiro {
@@ -55,7 +55,7 @@ public class Tabuleiro implements ITabuleiro {
     			+ " ou '" + opcoes.charAt(1) + "' se quiser ir para " + dir[1] + ". Você ainda tem " + casasRestantes + " casa(s) para andar.");
     }
     
-    public Pagamento moverJogador(int casas, Jogador jogador, Scanner teclado, IGUI gui) {
+    public Pagamento moverJogador(int casas, IJogador jogador, Scanner teclado, IGUI gui) {
     	int coords[] = {jogador.getI(), jogador.getJ()};
     	int casasDado = Integer.valueOf(casas);
     	while (casas > 0) {

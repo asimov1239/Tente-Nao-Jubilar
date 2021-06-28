@@ -1,14 +1,13 @@
 package model;
 
 import java.util.Scanner;
-
 import control.Pagamento;
-import jogador.Jogador;
+import jogador.IJogador;
 import view.IGUI;
 
 public class Empresa extends Propriedade {
 	
-	public Pagamento efeito(Jogador jogador, int casas, String[][] sr, IGUI gui) {
+	public Pagamento efeito(IJogador jogador, int casas, String[][] sr, IGUI gui) {
 		gui.setOutputText("Você caiu em " + nome + "!");
 		Scanner teclado = new Scanner(System.in);
 		Pagamento pagamento = null;
