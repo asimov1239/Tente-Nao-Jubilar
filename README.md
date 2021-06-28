@@ -11,7 +11,7 @@ O Tente Não Jubilar é uma versão do Monopólio (ou Banco Imobiliário) adapta
 ## Vídeo da Prévia
 Segue o [vídeo da prévia.](https://drive.google.com/file/d/1C1yYbuWAi0JLtMh-GVp5yADwuRK5mTpg/view?usp=sharing)
 ## Vídeo do Jogo
-A colocar.
+Segue o [vídeo do jogo.](https://drive.google.com/file/d/1OBoeM81OLcTqqpvcwPD5f4qA_j5-4lNh/view?usp=sharing)
 
 # Slides do Projeto
 ## Slides da Prévia
