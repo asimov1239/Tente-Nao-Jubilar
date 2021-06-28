@@ -373,7 +373,7 @@ public interface IAcaoGUI extends ActionListener {
 * `tomarDecisao`: recebe decisão de direção do jogador.
 * `getInputText`: retorna o texto obtido pelo painel de inserção de texto.
 * `esperarPassar`: "aguarda" até que o jogador aperte no botão "Passar".
-* `actionPerformed`:
+* `actionPerformed`: recebe o evento e associa uma ação correspondente ao evento.
 
 ### Interface IRControle
 Interface requerida para condução do jogo.
