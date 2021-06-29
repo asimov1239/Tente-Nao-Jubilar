@@ -15,9 +15,9 @@ Segue o [vídeo do jogo.](https://drive.google.com/file/d/1OBoeM81OLcTqqpvcwPD5f
 
 # Slides do Projeto
 ## Slides da Prévia
-Segue os [slides da prévia.](/assets/outdated_assets/TrabalhoMC322.pptx)
+Segue os [slides da prévia.](assets/outdated_assets/TrabalhoMC322.pptx)
 ## Slides da Apresentação Final
-A colocar.
+Segue os [slides da apresentação.](assets/TrabalhoMC322.pdf)
 ## Relatório de Evolução
 Veja o [progresso](Progresso.md).
 
