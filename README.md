@@ -1,7 +1,7 @@
 # Projeto Tente Não Jubilar
 
 # Descrição Resumida do Projeto/Jogo
-O Tente Não Jubilar é uma versão do Monopólio (ou Banco Imobiliário) adaptada para o mundo universitário, em que o objetivo é acumular créditos fazendo aulas e provas. Seus adversários também deverão parar nos institutos da Unicamp para fazer as aulas que você já fez, gerando mais créditos! Vence o indíviduo que conseguir 2000 créditos para passar de ano sem jubilar.
+O Tente Não Jubilar é uma versão do Monopólio (ou Banco Imobiliário) adaptada para o mundo universitário, em que o objetivo é acumular créditos fazendo aulas e provas. Seus adversários também deverão parar nos institutos da Unicamp para fazer as aulas que você já fez, gerando mais créditos! Vence o indivíduo que conseguir 2000 créditos para passar de ano sem jubilar.
 
 # Equipe
 * Gabriel Bonfim Silva de Moraes - 216111
@@ -19,7 +19,11 @@ Segue os [slides da prévia.](assets/outdated_assets/TrabalhoMC322.pptx)
 ## Slides da Apresentação Final
 Segue os [slides da apresentação.](assets/TrabalhoMC322.pdf)
 ## Relatório de Evolução
-Veja o [progresso](Progresso.md).
+Inicialmente, não haviam as perguntas e respostas, e o tabuleiro era menor e mais simples. Após aconselhamento, o tabuleiro foi ampliado e também se aumentou a complexidade do jogo.  
+O projeto foi iniciado de forma apressada: começamos a criar classes sem definir nossa estrutura de componentes, o que dificultou muito o desenvolvimento inicial do jogo. Apenas depois de distinguirmos os componentes, usando o padrão MVC, é que o trabalho progrediu. Ainda assim, houveram mudanças, por exemplo o Jogador, que deixou de ser um componente próprio e foi integrado ao Model.    
+Em determinado momento, optamos por utilizar um `ArrayList<Object>` para representar um pagamento, e era necessário o uso de casts. Por ser uma má prática de programação, mudamos de rota e criamos uma classe a parte `Pagamento`. Para mais detalhes veja o [progresso](Progresso.md).    
+A maior lição aprendida foi, sem dúvidas, que é de extrema importância um planejamento prévio, de "cima para baixo", antes de iniciar a implementação do código.  
+No geral, a condução de um projeto próprio em sua totalidade foi uma experiência marcante, divertida e cativante. Pretende-se ainda refatorar o código com novos patterns aprendidos, a exemplo do Factory Pattern, além de adicionar um plano de exceções (não feito por questões de tempo) e outros features, tais como: mais jogadores, negociações, hipotecas, efeitos sonoros e outros. Mais ainda, o trabalho despertou a vontade de usar os conhecimentos obtidos em Programação Orientada a Objetos para criar novos projetos.
 
 # Destaques de Código
 ## Destaque 1 - Herança e Polimorfismo
@@ -66,6 +70,7 @@ public abstract class Celula implements ICelula {
 		this.nome = props[3];
 	}
 	public abstract Pagamento efeito(IJogador jogador, int casas, String[][] sr, IGUI gui);	
+}
 	
 public abstract class Propriedade extends Celula {
 	protected int aluguel, custo;
@@ -76,6 +81,7 @@ public abstract class Propriedade extends Celula {
 		this.aluguel = Integer.parseInt(props[5]);
 		this.dono = null;
 	}
+	(...)
 }
 ```
 
@@ -86,13 +92,13 @@ Esse destaque mostra a conexão entre diferentes componentes por meio de método
 public class Main {
     public static void main(String[] args) {
     	IControle controle = new Controle();
-		IGUI gui = new GUI();
+	IGUI gui = new GUI();
     	IMontador montador = new Montador();
     	ITabuleiro tabuleiro = new Tabuleiro();
     	IDataReader dataReader = new DataReader();
     	montador.connect(dataReader);
-		gui.connect(controle);
-		controle.connect(gui);
+	gui.connect(controle);
+	controle.connect(gui);
     	controle.connect(montador);
     	controle.connect(tabuleiro);
     	controle.executarJogo();
@@ -135,11 +141,12 @@ public interface IMontador extends IAcaoMontador, IRDataReader {
 
 ## Componente Model
 Representa o espaço celular, ou seja, o tabuleiro e as células. Realiza a movimentação dos jogadores e executa o efeito de cada célula.  
+Obs.: o Jogador pertence ao componente model embora, no projeto, esteja em um pacote separado (`jogador`).  
 ![Model](assets/DiagramaModel.png)  
 **Ficha Técnica**
-* Classe: `src/model/Tabuleiro.java`, `src/model/Celula.java`, `src/model/Propriedade.java`, `src/model/Inicio.java`, `src/model/Instituto.java`, `src/model/Empresa.java`, `src/model/Atraso.java` e `src/model/SorteOuReves.java`
+* Classe: `src/model/Tabuleiro.java`, `src/model/Celula.java`, `src/model/Propriedade.java`, `src/model/Inicio.java`, `src/model/Instituto.java`, `src/model/Empresa.java`, `src/model/Atraso.java`, `src/model/SorteOuReves.java` e `src/jogador/Jogador.java`.  
 * Autores: Leandro Ponsano Corimbaba e Gabriel Bonfim Silva de Moraes
-* Interfaces: `src/model/ITabuleiro.java`, `src/model/IAcaoCelula.java` , `src/model/IPropriedadesCelula.java` e `src/model/ICelula.java`.  
+* Interfaces: `src/model/ITabuleiro.java`, `src/model/IAcaoCelula.java` , `src/model/IPropriedadesCelula.java`, `src/model/ICelula.java` e `src/jogador/IJogador.java`.  
 Interface agregadora do componente em java:
 
 ```
@@ -189,7 +196,7 @@ public interface IDataReader {
 ```
 * `setDataSource`: define o caminho do arquivo a retirar informações.
 * `readData`: lê o arquivo definido pelo método anterior e guarda suas informações.
-* `requestData`: retorna as informações guardadas pelo método anterior.
+* `requestData`: retorna as informações guardadas pelo método anterior, em forma de `String[][]`.
 
 ### Interface IRDataReader
 Interface requerida para leitura de arquivos de entrada.
@@ -235,7 +242,7 @@ public interface ITabuleiro {
 	public Pagamento moverJogador(int casas, IJogador jogador, Scanner teclado, IGUI gui);
 	
 ```
-* `definirTabuleiro`: armazena a matriz de `Celula` criada por um `Montador`. 
+* `definirTabuleiro`: armazena a matriz de `Celula` criada por um `Montador`, bem como a matriz de String contendo os efeitos do Sorte Ou Revés.  
 * `direciona`: recebe uma String representando uma direção (ex: "d" para direita) e altera as coordenadas do jogador adequadamente.
 * `direcaoValida`: verifica se a escolha de uma direção condiz com a bifurcação em questão.
 * `mostrarOpcoes`: mostra ao jogador as direções que pode tomar em uma bifurcação.
@@ -287,16 +294,53 @@ public interface IAcaoControle {
 ```
 * `getJogadores`: retorna o atributo `jogadores`. 
 * `connect`: métodos sobrecarregados: conecta o objeto em questão (no caso, um `Controle`) a um objeto `GUI`, `Montador` ou `Tabuleiro`.
-* `nomeJaEscolhido`: verifica se o jogador escolheu para si um nome repetido. 
+* `nomeJaEscolhido`: verifica se o jogador escolheu para si um nome repetido. Se sim, pede que escolha outro nome.
 * `iniciarJogadores`: inicia o atributo `jogadores`, um vetor de Jogadores.
 * `iniciarTabuleiro`: requisita ao `Montador` que monte o `Tabuleiro`.
 * `inicarJogo`: chama os 2 métodos anteriores.
-* `realizarPagamento`: efetua a cobrança recebida pelo método `ITabuleiro.moverJogador()`, contanto que seja diferente de null
+* `realizarPagamento`: efetua a cobrança recebida pelo método `ITabuleiro.moverJogador()`, contanto que seja diferente de null.  
 * `eliminarJogador`: elimina um jogador do vetor `jogadores`, se ele houver atingido 0 créditos.
-* `conferirVitoria`: verifica se só sobrou um jogador, ou se um deles atingiu 2000 cŕeditos.
+* `conferirVitoria`: verifica se só sobrou um jogador, ou se um deles atingiu 2000 cŕeditos. Se sim , retorna `true` e o jogo é terminado.
 * `executarTurno`: pede ao `Tabuleiro` que execute a vez de um jogador.
 * `executarRodada`: chama o método anterior para cada um dos jogadores.
 * `executarJogo`: chama o método anterior até que `conferirVitoria` retorne `true`. 
+
+### Interface IJogador
+Contém apenas getters e setters para os atributos do jogador.  
+
+```
+public interface IJogador {
+    public ArrayList<Propriedade> getPosses();
+    public int getID ();
+    public void setID (int id);
+    public void adicionarPropriedade(Propriedade nova);
+    public int getI();
+    public int getJ();
+    public int getAtraso();
+    public String getNome();
+    public String getUltimaBifurcacao();    
+    public int getCredito();    
+    public void setI(int i);    
+    public void setJ(int j);    
+    public void setAtraso(int qtde);
+    public void setCredito(int qtde);    
+    public void setUltimaBifurcacao(String bifurcacao);
+}
+```
+* `getPosses`: retorna o atributo `posses` (vetor de Propriedades);  
+* `getID`: retorna o ID (número) do jogador;  
+* `setID`: define o ID do jogador;  
+* `adicionarPropriedade`: adiciona uma `Propriedade` ao atributo `posses`;  
+* `getI`: retorna a posição i do jogador (linha na matriz do tabuleiro);  
+* `getJ`: retorna a posição j do jogador (coluna na matriz do tabuleiro);  
+* `getAtraso`: retorna o atributo `atraso` (quantidade de turnos que um jogador está suspenso);  
+* `getUltimaBifurcacao`: retorna o atributo `ultimaBifurcacao`, que armazena a última escolha de direção feita pelo jogador (só é chamado quando o jogador está na casa central (3, 3));  
+* `getCredito`: retorna a quantidade de crédito que o jogador possui;  
+* `setI`: atualiza a coordenada i do jogador;  
+* `setJ`: atualiza a coordenada j do jogador;  
+* `setAtraso`: atualiza o atributo `atraso`;  
+* `setCredito`: adiciona ou retira créditos do jogador;  
+* `setUltimaBifurcacao`: armazena a última escolha de direção feita pelo jogador.   
 
 ### Interface IRGUI
 Interface requerida para apresentação da interface gráfica.
